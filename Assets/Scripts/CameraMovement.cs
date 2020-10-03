@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraMovement : MonoBehaviour
 {
+    public float maxTime = 60;
     public float velocityY = 0;
+    public GameObject pickedUp;
+    public float remainingTime = 30;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +37,7 @@ public class CameraMovement : MonoBehaviour
         var characterController = GetComponent<CharacterController>();
         characterController.Move(transformedDirection);
 
-        velocityY -= 0.4f * Time.deltaTime;
+        velocityY -= 0.4f * Time.fixedDeltaTime;
         characterController.Move(new Vector3(0, velocityY, 0));
 
         if (characterController.isGrounded)
@@ -50,15 +51,46 @@ public class CameraMovement : MonoBehaviour
 
         var deltaX = 10 * Input.GetAxis("Mouse X");
         transform.Rotate(Vector3.up, deltaX);
+
+        remainingTime -= Time.fixedDeltaTime;
+
+        if (remainingTime < 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        VisitObjective objective = other.GetComponent<VisitObjective>();
-        if (objective)
+        VisitObjective visitObjective = other.GetComponent<VisitObjective>();
+        if (visitObjective)
         {
-            objective.visit();
+            remainingTime += visitObjective.visit();
             Debug.Log("++++++++++++++++++");
+        }
+
+        PickupObjective pickupObjective = other.GetComponent<PickupObjective>();
+        if (pickupObjective)
+        {
+            if (!pickedUp)
+            {
+                pickedUp = pickupObjective.gameObject;
+                pickupObjective.transform.SetParent(transform);
+            }
+        }
+
+        DropObjective dropObjective = other.GetComponent<DropObjective>();
+        if (dropObjective)
+        {
+            if (pickedUp)
+            {
+                remainingTime += dropObjective.drop(pickedUp);
+            }
+        }
+
+        if (remainingTime > maxTime)
+        {
+            remainingTime = maxTime;
         }
     }
 }

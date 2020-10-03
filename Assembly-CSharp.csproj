@@ -50,10 +50,13 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\CameraMovement.cs" />
-     <Compile Include="Assets\Scripts\Follower.cs" />
      <Compile Include="Assets\Scripts\Underground.cs" />
      <Compile Include="Assets\Scripts\Objective\VisitObjective.cs" />
+     <Compile Include="Assets\Scripts\CameraMovement.cs" />
+     <Compile Include="Assets\Scripts\Follower.cs" />
+     <Compile Include="Assets\Scripts\Objective\PickupObjective.cs" />
+     <Compile Include="Assets\Scripts\Objective\DropObjective.cs" />
+     <Compile Include="Assets\Scripts\RemainingTime.cs" />
  <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
  <HintPath>/home/niels/Dokumente/Unity/New Unity Project/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
  </Reference>

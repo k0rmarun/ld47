@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-public class VisitObjective : MonoBehaviour
+public class DropObjective : MonoBehaviour
 {
     public bool visited = false;
     public float additionalTime = 20;
 
-    public float visit()
+    public float drop(GameObject pickedUp)
     {
         if (visited)
         {
@@ -13,7 +13,7 @@ public class VisitObjective : MonoBehaviour
         }
 
         visited = true;
-        Destroy(gameObject, 0.1f);
+        Destroy(pickedUp, 0.1f);
         return additionalTime;
     }
 }
