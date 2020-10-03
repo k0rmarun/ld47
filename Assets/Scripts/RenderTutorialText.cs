@@ -11,7 +11,9 @@ public class RenderTutorialText : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            getTextBox().gameObject.SetActive(true);
+            var textBox = getTextBox();
+            textBox.gameObject.transform.parent.gameObject.SetActive(true);
+            textBox.gameObject.SetActive(true);
             timeRemaining = other.GetComponent<CameraMovement>().remainingTime;
         }
     }
@@ -28,7 +30,9 @@ public class RenderTutorialText : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            getTextBox().gameObject.SetActive(false);
+            var textBox = getTextBox();
+            textBox.gameObject.transform.parent.gameObject.SetActive(false);
+            textBox.gameObject.SetActive(false);
         }
     }
 

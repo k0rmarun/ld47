@@ -49,7 +49,9 @@ public class CameraMovement : MonoBehaviour
                 velocityY = 0.2f;
             }
         }
-
+        GetComponent<Animator>().SetBool("Jumping", !characterController.isGrounded);
+        GetComponent<Animator>().SetBool("Walking", transformedDirection.magnitude > 0);
+        
         var deltaX = 10 * Input.GetAxis("Mouse X");
         transform.Rotate(Vector3.up, deltaX);
 
