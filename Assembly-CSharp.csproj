@@ -643,6 +643,20 @@
  <HintPath>/home/niels/Unity/Hub/Editor/2020.1.6f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/mscorlib.dll</HintPath>
  </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="ExternalAssets\3d\Flag.blend" />
+    <Content Include="ExternalAssets\3d\Flag.mtl" />
+    <Content Include="ExternalAssets\3d\Flag.obj" />
+    <Content Include="ExternalAssets\3d\Flag.x3d" />
+    <Content Include="ExternalAssets\3d\Flag_1024.png" />
+    <Content Include="ExternalAssets\3d\Flag_256.png" />
+    <Content Include="ExternalAssets\3d\Receptacle.blend" />
+    <Content Include="ExternalAssets\3d\Receptacle.mtl" />
+    <Content Include="ExternalAssets\3d\Receptacle.obj" />
+    <Content Include="ExternalAssets\3d\Receptacle.x3d" />
+    <Content Include="ExternalAssets\3d\Receptacle_1024.png" />
+    <Content Include="ExternalAssets\3d\Receptacle_256.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
