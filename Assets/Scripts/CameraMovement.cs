@@ -1,13 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class CameraMovement : MonoBehaviour
 {
-    public float maxTime = 60;
     public float velocityY = 0;
     public GameObject pickedUp;
-    public float remainingTime = 30;
-    public static int respawnCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -55,14 +51,6 @@ public class CameraMovement : MonoBehaviour
         var deltaX = 10 * Input.GetAxis("Mouse X");
         transform.Rotate(Vector3.up, deltaX);
 
-        remainingTime -= Time.fixedDeltaTime;
-
-        if (remainingTime < 0)
-        {
-            respawnCount++;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-
         if (pickedUp)
         {
             pickedUp.transform.localPosition = transform.rotation * -transform.forward;
@@ -74,7 +62,7 @@ public class CameraMovement : MonoBehaviour
         VisitObjective visitObjective = other.GetComponent<VisitObjective>();
         if (visitObjective)
         {
-            remainingTime += visitObjective.visit();
+            ObjectiveRegistry.AddTime(visitObjective.visit());
         }
 
         PickupObjective pickupObjective = other.GetComponent<PickupObjective>();
@@ -82,6 +70,7 @@ public class CameraMovement : MonoBehaviour
         {
             if (!pickedUp)
             {
+                pickupObjective.Pickup();
                 pickedUp = pickupObjective.gameObject;
                 pickedUp.transform.SetParent(transform);
                 pickedUp.transform.localPosition = transform.rotation * -transform.forward;
@@ -94,14 +83,9 @@ public class CameraMovement : MonoBehaviour
         {
             if (pickedUp)
             {
-                remainingTime += dropObjective.drop(pickedUp);
+                ObjectiveRegistry.AddTime(dropObjective.drop(pickedUp));
                 pickedUp = null;
             }
-        }
-
-        if (remainingTime > maxTime)
-        {
-            remainingTime = maxTime;
         }
     }
 }

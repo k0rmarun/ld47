@@ -10,8 +10,7 @@ public class RemainingTime : MonoBehaviour
     void Update()
     {
         var slider = GetComponent<Slider>();
-        var cameraMovement = player.GetComponent<CameraMovement>();
-        slider.value = Math.Max(0, cameraMovement.remainingTime);
-        slider.maxValue = cameraMovement.maxTime;
+        slider.value = Math.Max(0, ObjectiveRegistry.RemainingTime);
+        slider.maxValue = ObjectiveRegistry.MaxTime;
     }
 }

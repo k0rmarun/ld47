@@ -6,6 +6,7 @@ public class RenderTutorialText : MonoBehaviour
     public TMP_Text textBoxFirstTime;
     public TMP_Text textBoxMoreTimes;
     public float timeRemaining;
+    public bool holdTime;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,7 +15,7 @@ public class RenderTutorialText : MonoBehaviour
             var textBox = getTextBox();
             textBox.gameObject.transform.parent.gameObject.SetActive(true);
             textBox.gameObject.SetActive(true);
-            timeRemaining = other.GetComponent<CameraMovement>().remainingTime;
+            timeRemaining = ObjectiveRegistry.RemainingTime;
         }
     }
 
@@ -22,7 +23,10 @@ public class RenderTutorialText : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<CameraMovement>().remainingTime = timeRemaining;
+            if (holdTime)
+            {
+                ObjectiveRegistry.RemainingTime = timeRemaining;
+            }
         }
     }
 
@@ -38,7 +42,7 @@ public class RenderTutorialText : MonoBehaviour
 
     private TMP_Text getTextBox()
     {
-        if (CameraMovement.respawnCount == 0)
+        if (ObjectiveRegistry.RespawnCount == 0)
         {
             return textBoxFirstTime;
         }

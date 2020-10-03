@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TutorialStoneSpawner : MonoBehaviour
 {
@@ -11,7 +8,7 @@ public class TutorialStoneSpawner : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (CameraMovement.respawnCount > 0)
+            if (ObjectiveRegistry.RespawnCount > 0)
             {
                 hiddenStones.SetActive(true);
             }
