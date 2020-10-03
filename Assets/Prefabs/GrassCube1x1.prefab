@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5281777882376616059}
   - component: {fileID: 5281777882376616058}
   - component: {fileID: 6436651949619831876}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GrassCube1x1
   m_TagString: Floor
   m_Icon: {fileID: 0}

@@ -13,7 +13,9 @@ public class DropObjective : MonoBehaviour
         }
 
         visited = true;
-        Destroy(pickedUp, 0.1f);
+        pickedUp.transform.SetParent(transform);
+        pickedUp.transform.localPosition = transform.up / 2;
+        // Destroy(pickedUp, 0.1f);
         return additionalTime;
     }
 }

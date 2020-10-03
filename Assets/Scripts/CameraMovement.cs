@@ -7,6 +7,7 @@ public class CameraMovement : MonoBehaviour
     public float velocityY = 0;
     public GameObject pickedUp;
     public float remainingTime = 30;
+    public static int respawnCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +57,13 @@ public class CameraMovement : MonoBehaviour
 
         if (remainingTime < 0)
         {
+            respawnCount++;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (pickedUp)
+        {
+            pickedUp.transform.localPosition = transform.rotation * -transform.forward;
         }
     }
 
@@ -66,7 +73,6 @@ public class CameraMovement : MonoBehaviour
         if (visitObjective)
         {
             remainingTime += visitObjective.visit();
-            Debug.Log("++++++++++++++++++");
         }
 
         PickupObjective pickupObjective = other.GetComponent<PickupObjective>();
@@ -75,7 +81,9 @@ public class CameraMovement : MonoBehaviour
             if (!pickedUp)
             {
                 pickedUp = pickupObjective.gameObject;
-                pickupObjective.transform.SetParent(transform);
+                pickedUp.transform.SetParent(transform);
+                pickedUp.transform.localPosition = transform.rotation * -transform.forward;
+                Destroy(pickupObjective);
             }
         }
 
@@ -85,6 +93,7 @@ public class CameraMovement : MonoBehaviour
             if (pickedUp)
             {
                 remainingTime += dropObjective.drop(pickedUp);
+                pickedUp = null;
             }
         }
 

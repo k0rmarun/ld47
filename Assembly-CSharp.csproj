@@ -57,6 +57,29 @@
      <Compile Include="Assets\Scripts\Objective\PickupObjective.cs" />
      <Compile Include="Assets\Scripts\Objective\DropObjective.cs" />
      <Compile Include="Assets\Scripts\RemainingTime.cs" />
+     <Compile Include="Assets\Scripts\RenderTutorialText.cs" />
+     <Compile Include="Assets\Scripts\TutorialStoneSpawner.cs" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
  <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
  <HintPath>/home/niels/Dokumente/Unity/New Unity Project/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
  </Reference>
@@ -642,20 +665,6 @@
  <Reference Include="mscorlib">
  <HintPath>/home/niels/Unity/Hub/Editor/2020.1.6f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/mscorlib.dll</HintPath>
  </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ExternalAssets\3d\Flag.blend" />
-    <Content Include="ExternalAssets\3d\Flag.mtl" />
-    <Content Include="ExternalAssets\3d\Flag.obj" />
-    <Content Include="ExternalAssets\3d\Flag.x3d" />
-    <Content Include="ExternalAssets\3d\Flag_1024.png" />
-    <Content Include="ExternalAssets\3d\Flag_256.png" />
-    <Content Include="ExternalAssets\3d\Receptacle.blend" />
-    <Content Include="ExternalAssets\3d\Receptacle.mtl" />
-    <Content Include="ExternalAssets\3d\Receptacle.obj" />
-    <Content Include="ExternalAssets\3d\Receptacle.x3d" />
-    <Content Include="ExternalAssets\3d\Receptacle_1024.png" />
-    <Content Include="ExternalAssets\3d\Receptacle_256.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

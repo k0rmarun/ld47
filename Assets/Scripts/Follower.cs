@@ -15,7 +15,7 @@ public class Follower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = toFollow.transform.position + toFollow.transform.TransformDirection(new Vector3(0, 1.3f, -5.2f));
+        transform.position = toFollow.transform.position + toFollow.transform.TransformDirection(new Vector3(0, 1.7f, -7.2f));
         transform.LookAt(toFollow.transform);
     }
 }

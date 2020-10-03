@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5281777882376616059}
   - component: {fileID: 5281777882376616058}
   - component: {fileID: -4820397922890478085}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DirtCube1x1
   m_TagString: Floor
   m_Icon: {fileID: 0}

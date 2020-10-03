@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1593143868903193748}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SandCube3x3
   m_TagString: Floor
   m_Icon: {fileID: 0}
