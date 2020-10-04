@@ -4,6 +4,7 @@ public class CameraMovement : MonoBehaviour
 {
     public float velocityY = 0;
     public GameObject pickedUp;
+    public float groundedDuration = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -39,11 +40,16 @@ public class CameraMovement : MonoBehaviour
 
         if (characterController.isGrounded)
         {
+            groundedDuration += Time.fixedDeltaTime;
             velocityY = 0;
-            if (Input.GetKey("space"))
+            if (Input.GetKey("space") && groundedDuration > 0.5)
             {
                 velocityY = 0.2f;
             }
+        }
+        else
+        {
+            groundedDuration = 0;
         }
         GetComponent<Animator>().SetBool("Jumping", !characterController.isGrounded);
         GetComponent<Animator>().SetBool("Walking", transformedDirection.magnitude > 0);
