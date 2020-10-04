@@ -7,7 +7,7 @@ public class Follower : MonoBehaviour
 
     void Update()
     {
-        offsetY = Mathf.Clamp(offsetY + 0.1f * Input.GetAxis("Mouse Y"), 0, 5);
+        offsetY = Mathf.Clamp(offsetY - 0.1f * Input.GetAxis("Mouse Y"), 2.5f, 5);
 
         Vector3 newPosition = toFollow.transform.position +
                               toFollow.transform.TransformDirection(new Vector3(0, offsetY, -7.2f));
