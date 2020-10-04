@@ -12,6 +12,11 @@ public class DropObjective : MonoBehaviour
     private void Start()
     {
         ObjectiveRegistry.AddObjective();
+        ParticleSystem particleSystem = GetComponent<ParticleSystem>();
+        if (particleSystem)
+        {
+            particleSystem.Stop();
+        }
     }
 
     public float drop(GameObject pickedUp)
@@ -23,9 +28,16 @@ public class DropObjective : MonoBehaviour
 
         visited = true;
         ObjectiveRegistry.CompleteObjective();
-        image.color = Color.grey;
+        image.color = new Color(0.22f, 0.8f, 0.18f, 0.66f);
         pickedUp.transform.SetParent(transform);
         pickedUp.transform.localPosition = transform.up / 2;
+
+        ParticleSystem particleSystem = GetComponent<ParticleSystem>();
+        if (particleSystem)
+        {
+            particleSystem.Play();
+        }
+        
         return additionalTime;
     }
 }

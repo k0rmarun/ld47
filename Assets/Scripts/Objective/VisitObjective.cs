@@ -21,7 +21,7 @@ public class VisitObjective : MonoBehaviour
 
         visited = true;
         ObjectiveRegistry.CompleteObjective();
-        image.color = Color.grey;
+        image.color = new Color(0.22f, 0.8f, 0.18f, 0.66f);
         Destroy(gameObject, 0.1f);
         return additionalTime;
     }
