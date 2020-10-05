@@ -16,16 +16,7 @@ public class ObjectiveRegistry : MonoBehaviour
     {
         RemainingTime = initialTime;
 
-        foreach (var listScene in MySceneManager.ListScenes())
-        {
-            Debug.Log(listScene);
-        }
-        Debug.Log(SceneManager.GetActiveScene().name);
-        for (var i = 0; i < SceneManager.sceneCount; i++)
-        {
-            Debug.Log(SceneManager.GetSceneAt(i).name);
-        }
-        }
+    }
 
     private void Update()
     {
