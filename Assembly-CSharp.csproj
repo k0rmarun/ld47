@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\Objective\PickupObjective.cs" />
      <Compile Include="Assets\Scripts\Objective\VisitObjective.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
+     <Compile Include="Assets\Scripts\ReverseCamera.cs" />
      <Compile Include="Assets\Scripts\RemainingTime.cs" />
      <Compile Include="Assets\Scripts\Objective\DropObjective.cs" />
      <Compile Include="Assets\Scripts\RenderTutorialText.cs" />
@@ -61,7 +62,6 @@
      <Compile Include="Assets\Scripts\TutorialStoneSpawner.cs" />
      <Compile Include="Assets\Scripts\MySceneManager.cs" />
      <Compile Include="Assets\Scripts\Follower.cs" />
-     <Compile Include="Assets\Scripts\ReverseCamera.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -15,15 +16,20 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        RaycastHit raycastHit;
         float floorModifier = 1;
-        bool hit = Physics.Raycast(new Ray(transform.position, Vector3.down), out raycastHit, 3, 1 << 8);
-        if (hit)
+        float floorDistance = 9999;
+        var raycastHits = Physics.RaycastAll(new Ray(transform.position, Vector3.down), 3, 1 << 8);
+        foreach (var hit in raycastHits)
         {
-            var underground = raycastHit.transform.GetComponent<Underground>();
-            if (underground)
+            if (hit.distance < floorDistance)
             {
-                floorModifier = underground.movementSpeed;
+                var underground = hit.transform.GetComponent<Underground>();
+                if (underground)
+                {
+                    Debug.DrawLine(transform.position, hit.transform.position);
+                    floorModifier = underground.movementSpeed;
+                    floorDistance = hit.distance;
+                }
             }
         }
 
