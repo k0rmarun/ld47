@@ -17,8 +17,6 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
- 
-
         Underground underground = null;
         float floorDistance = 9999;
         var raycastHits = Physics.RaycastAll(new Ray(transform.position, Vector3.down), 3, 1 << 8);
@@ -76,10 +74,17 @@ public class CameraMovement : MonoBehaviour
         {
             groundedDuration = 0;
         }
+
         GetComponent<Animator>().SetBool("Jumping", !characterController.isGrounded);
         GetComponent<Animator>().SetBool("Walking", transformedDirection.magnitude > 0);
-        
-        var deltaX = 10 * Input.GetAxis("Mouse X");
+
+        float mouseAccel = 3000 * Screen.width / 1920;
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            mouseAccel /= 100;
+        }
+
+        var deltaX = mouseAccel * Time.deltaTime * Input.GetAxis("Mouse X");
         transform.Rotate(Vector3.up, deltaX);
 
         if (pickedUp)

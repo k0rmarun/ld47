@@ -17,7 +17,13 @@ public class Follower : MonoBehaviour
             return;
         }
 
-        angleX = Mathf.Clamp(angleX - 5 * Input.GetAxis("Mouse Y"), 20, 170);
+        float mouseAccel = 1000 * Screen.height / 1080;
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            mouseAccel /= 100;
+        }
+
+        angleX = Mathf.Clamp(angleX - mouseAccel * Time.deltaTime * Input.GetAxis("Mouse Y"), 20, 170);
 
         Vector3 offset = Quaternion.AngleAxis(angleX, Vector3.right) * Vector3.down * 7.2f;
         Vector3 newPosition = toFollow.transform.position +
