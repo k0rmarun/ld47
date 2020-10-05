@@ -7,6 +7,7 @@ public class CameraMovement : MonoBehaviour
     public GameObject pickedUp;
     public float groundedDuration = 0;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,19 +17,37 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        float floorModifier = 1;
+ 
+
+        Underground underground = null;
         float floorDistance = 9999;
         var raycastHits = Physics.RaycastAll(new Ray(transform.position, Vector3.down), 3, 1 << 8);
         foreach (var hit in raycastHits)
         {
             if (hit.distance < floorDistance)
             {
-                var underground = hit.transform.GetComponent<Underground>();
-                if (underground)
+                var _underground = hit.transform.GetComponent<Underground>();
+                if (_underground)
                 {
-                    Debug.DrawLine(transform.position, hit.transform.position);
-                    floorModifier = underground.movementSpeed;
+                    underground = _underground;
                     floorDistance = hit.distance;
+                }
+            }
+        }
+
+        float floorModifier = underground ? underground.movementSpeed : 1;
+        AudioClip audioClip = underground ? underground.walkingSound : null;
+
+        if (audioClip)
+        {
+            foreach (var audioSource in GetComponents<AudioSource>())
+            {
+                if (audioSource.outputAudioMixerGroup.name == "Steps")
+                {
+                    if (!audioSource.isPlaying)
+                    {
+                        audioSource.PlayOneShot(audioClip);
+                    }
                 }
             }
         }

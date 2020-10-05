@@ -109,3 +109,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 0.9
+  walkingSound: {fileID: 8300000, guid: d76ca8297fbcf9d50ab697050c2d273a, type: 3}

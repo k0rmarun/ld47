@@ -28,7 +28,6 @@ public class Follower : MonoBehaviour
         var newObjects = getObjectsBetweenCameraAndPlayer();
         foreach (var collider in newObjects)
         {
-            Debug.Log(collider);
             TrackedObjects.Remove(collider.gameObject);
 
             var meshRenderer = collider.gameObject.GetComponent<MeshRenderer>();
